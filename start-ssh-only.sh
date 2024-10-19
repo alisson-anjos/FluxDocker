@@ -51,4 +51,6 @@ fi
 # Execute the user's script
 bash /workspace/start_user.sh
 
+/download-all.sh
+
 sleep infinity
