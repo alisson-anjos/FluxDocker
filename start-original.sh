@@ -4,7 +4,7 @@
 # Things like installing additional custom nodes, or downloading models can be done here.
 
 # Update the included workflows
-bash /update_Workflows.sh
+bash /update-workflow-script.sh
 
 # Launch the UI
 python3 /workspace/ComfyUI/main.py --listen

@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # The URL of the github repo
-repo_url="https://raw.githubusercontent.com/ValyrianTech/ComfyUI_with_Flux/main/comfyui-without-flux/workflows"
+repo_url="https://raw.githubusercontent.com/ValyrianTech/alisson-anjos/FluxDocker/tree/main/workflows"
 
 # The local directory to store the files
-local_dir="/workspace/ComfyUI/pysssss-workflows"
+local_dir="/workspace/ComfyUI/user/default/workflows"
 
 # List of file names
-file_list=("AdvancedLivePortrait.json" "AdvancedLivePortrait_with_ExpressionEditor.json" "Controlnet.json" "ExpressionEditor.json" "FaceSwap.json" "img2img.json" "Inpainting.json" "LoRa.json" "Outpainting.json" "txt2img.json" "Upscale_LDSR.json" "Upscale_SUPIR.json" "Xlabs-AI_RealismLoRa.json")
+file_list=("FLUX_Q8_GGUF.json")
 
 # Change to the local directory
 cd $local_dir
