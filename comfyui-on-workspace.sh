@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mdkir -p /workspace
+mkdir -p /workspace
 
 if [[ ! -d /workspace/ComfyUI ]]; then
     # If we don't already have /workspace/ComfyUI, move it there

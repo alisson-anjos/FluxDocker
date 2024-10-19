@@ -33,6 +33,14 @@ COPY --chmod=755 start-original.sh /start-original.sh
 COPY --chmod=755 comfyui-on-workspace.sh /comfyui-on-workspace.sh
 COPY --chmod=755 ai-toolkit-on-workspace.sh /ai-toolkit-on-workspace.sh
 
+# Clone the git repo and install requirements in the same RUN command to ensure they are in the same layer
+RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
+    cd ComfyUI && \
+    pip3 install -r requirements.txt && \
+    cd custom_nodes && \
+    git clone https://github.com/ltdrdata/ComfyUI-Manager.git && \
+    cd /ComfyUI
+
 WORKDIR /workspace
 
 EXPOSE 8188
@@ -44,16 +52,19 @@ RUN pip3 install jupyterlab
 EXPOSE 8888
 
 
+# Add download scripts for additional models
+COPY --chmod=755 download-controlnet.sh /download-controlnet.sh
+COPY --chmod=755 download-florence-2.sh /download-florence-2.sh
+COPY --chmod=755 download-workflows.sh /download-workflows.sh
+COPY --chmod=755 update-workflow-script.sh /update-workflow-script.sh
+COPY --chmod=755 download-all.sh /download-all.sh
+COPY --chmod=755 make-venv.sh /make-venv.sh
+COPY --chmod=755 download-flux-models.sh /download-flux-models.sh
+
 # ComfyUI-GGUF
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/city96/ComfyUI-GGUF.git && \
     cd ComfyUI-GGUF && \
-    pip3 install -r requirements.txt
-
-# ComfyUI_LayerStyle
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git && \
-    cd ComfyUI_LayerStyle && \
     pip3 install -r requirements.txt
 
 # ComfyUI_essentials
@@ -92,7 +103,6 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
 
-
 # KJNodes
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/kijai/ComfyUI-KJNodes.git && \
@@ -103,6 +113,13 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/rgthree/rgthree-comfy.git && \
     cd rgthree-comfy && \
+    pip3 install -r requirements.txt
+
+
+# ComfyUI_LayerStyle
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git && \
+    cd ComfyUI_LayerStyle && \
     pip3 install -r requirements.txt
 
 
