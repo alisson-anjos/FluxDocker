@@ -6,6 +6,9 @@ repo_url="https://raw.githubusercontent.com/ValyrianTech/alisson-anjos/FluxDocke
 # The local directory to store the files
 local_dir="/workspace/ComfyUI/user/default/workflows"
 
+# Create the local directory if it does not exist
+mkdir -p $local_dir
+
 # List of file names
 file_list=("FLUX_Q8_GGUF.json")
 

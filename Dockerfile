@@ -6,6 +6,8 @@ ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-cudnn$CUDNN_VERSION-devel-ubuntu$UBUNT
 
 FROM $DOCKER_FROM AS base
 
+
+
 # Install Python plus openssh, which is our minimum set of required packages.
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip python3-venv && \
@@ -22,6 +24,7 @@ apt-get install -y nginx
 # Copy the 'default' configuration file to the appropriate location
 COPY default /etc/nginx/sites-available/default
 
+ENV JUPYTER_PASSWORD=""
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 
 ARG PYTORCH="2.5.0"

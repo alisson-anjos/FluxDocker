@@ -30,7 +30,7 @@ fi
 service nginx start
 
 # Start JupyterLab
-jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.allow_origin='*' &
+jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.allow_origin='*' --NotebookApp.token='' --NotebookApp.password=$JUPYTER_PASSWORD--ServerApp.preferred_dir=/workspace &
 echo "JupyterLab started"
 
 # # Check if the flux model is present
