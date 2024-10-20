@@ -24,7 +24,7 @@ apt-get install -y nginx
 # Copy the 'default' configuration file to the appropriate location
 COPY default /etc/nginx/sites-available/default
 
-ENV JUPYTER_PASSWORD=""
+ENV JUPYTER_TOKEN=""
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 
 ARG PYTORCH="2.5.0"
@@ -120,10 +120,10 @@ RUN cd /ComfyUI/custom_nodes && \
 
 
 # ComfyUI_LayerStyle
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git && \
-    cd ComfyUI_LayerStyle && \
-    pip3 install -r requirements.txt
+# RUN cd /ComfyUI/custom_nodes && \
+#     git clone https://github.com/chflame163/ComfyUI_LayerStyle.git && \
+#     cd ComfyUI_LayerStyle && \
+#     pip3 install -r requirements.txt
 
 
 # AI-Toolkit
